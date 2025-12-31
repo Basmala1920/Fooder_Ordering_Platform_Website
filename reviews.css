@@ -1,0 +1,249 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+/*CSS Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Color Variables*/
+:root {
+  --text-colorl: #9a9a9a; /* Light text color */
+  --text-color: #344a25; /* Main text color */
+  --nav-color: #6e9671; /* Navbar background color */
+  --orange-color: #ffc800; /* Accent color for stars */
+  --bg: #fff8e7; /* Page background */
+  --bg2: #f4e7d0; /* Secondary background / review boxes */
+   --text-color-light: #9a9a9a; /* Subtle text */
+  --text-color: #344a25;       /* Main text */
+  --nav-color: #5e7b61;        /* Nav header */
+  --orange-color: #d5a03d;     /* Accent color */
+
+  --first-color: white;
+  --second-color: #d5a03d;
+  --third-color: #323033;
+  --forth-color: #b58835;
+  --bg-color: #6e9671;
+  --backg-color: #fff8e7;
+
+  --primary-font: sans-serif;
+  --secondary-font: "Pacifico";
+  --thirdly-font: "Bungee";
+}
+
+/* Global Styles */
+body {
+  font-family: Poppins, sans-serif;
+  padding: 20px;
+  background: var(--bg);
+}
+
+h1 {
+  font-size: 40px;
+  font-weight: bold;
+  text-align: center;
+  color: var(--nav-color);
+  margin-top: 80px; /* Spacing below fixed header */
+}
+
+.small {
+  text-align: center;
+  color: var(--text-colorl);
+  margin-bottom: 35px;
+  font-size: 12px;
+}
+
+p {
+  color: var(--text-color);
+  margin: 10px;
+  font-size: 16px;
+}
+
+/* Reset list style */
+ul {
+  list-style: none;
+}
+
+/* Remove default link decoration */
+a {
+  text-decoration: none;
+  color: var(--first-color);
+}
+
+/* -------------------------------------------
+   Product Image Styling
+   ------------------------------------------- */
+.item-image img {
+  width: 20vh;
+  height: 20vh;
+  border: 2px solid var(--bg2);
+  border-radius: 8px;
+  transition: 0.5s;
+}
+
+/* Tilt effect on hover */
+.item-image img:hover {
+  transform: rotate3d(1, 2, 0, -10deg);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* -------------------------------------------
+   Review Box
+   ------------------------------------------- */
+.review {
+  border: 1px solid var(--bg2);
+  padding: 15px;
+  margin: 60px 100px;
+  background: var(--bg2);
+  border-radius: 8px;
+  text-align: center;
+}
+
+/* Static order info (image + title + stars) */
+.static {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--bg);
+  border-radius: 8px;
+  margin: 15px;
+  padding: 15px;
+  transition: 0.5s;
+}
+
+/* Shadow effect on hover */
+.static:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Star Rating */
+.stars {
+  font-size: 25px;
+  color: var(--orange-color);
+  cursor: pointer;
+}
+
+.stars span {
+  padding: 0 5px;
+}
+
+/* Review Input Field */
+.opinion input {
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 8px;
+  border: 2px solid var(--bg2);
+  width: 70%;
+}
+
+.opinion input:focus {
+  outline: none;
+}
+
+/* Submit Button */
+.opinion button {
+  padding: 8px 12px;
+  margin: 10px 0;
+  border-radius: 8px;
+  border: 2px solid var(--bg2);
+  background: var(--bg2);
+  color: var(--text-color);
+  cursor: pointer;
+  transition: 0.5s ease-in-out;
+}
+
+/* Button hover animation */
+.opinion button:hover {
+  background: var(--bg);
+  border: 2px solid var(--nav-color);
+  color: var(--nav-color);
+  transform: translate(2px, -2px);
+}
+
+/* Printed Review Output */
+.reviewOutput {
+  margin: 15px;
+  font-weight: 600;
+  padding: 5px;
+}
+
+/* -------------------------------------------
+   Responsive (Mobile)
+   ------------------------------------------- */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 25px;
+  }
+  .small {
+    margin-top: 5px;
+    margin-bottom: 15px;
+    font-size: 10px;
+  }
+
+  /* Mobile navigation */
+ .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background-color: var(--bg-color);
+    position: absolute;
+    top: 70px;
+    left: 0;
+    padding: 10px 0;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .dropdown-menu {
+    position: static;
+    box-shadow: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  /* Stack order cards vertically */
+  .static {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    margin: 5px;
+    background-color: var(--bg2);
+  }
+  .static:hover {
+    box-shadow: none;
+  }
+
+  /* Review box becomes narrower */
+  .review {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 25px;
+  }
+
+  /* Smaller images on mobile */
+  .item-image img {
+    width: 15vh;
+    height: 15vh;
+  }
+
+  p {
+    font-size: 14px;
+  }
+  .opinion input {
+    width: 60%;
+  }
+
+  /* Star color stronger on mobile */
+  .stars {
+    color: #ffa600;
+  }
+}

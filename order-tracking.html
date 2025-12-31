@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Website favicon -->
+  <link rel="icon" type="image/jpeg" href="Icon.jpg" />
+
+  <!-- Page title -->
+  <title>Order Tracking - Yummy</title>
+
+  <!-- External CSS file -->
+  <link rel="stylesheet" href="order-tracking.css" />
+</head>
+
+<body>
+  <!-- ================= HEADER ================= -->
+  <header class="head1-home">
+      <!-- Logo Section -->
+
+      <div class="logo">
+        <img
+          src="photos/6d3218b9c7e28faefd766fa0b3d95713.jpg"
+          width="50px"
+          alt="Yummy Logo"
+        />
+        <h3 class="text-logo">Yummy</h3>
+      </div>
+
+      <div class="state-nav">
+        <ul class="nav-links" id="navLinks">
+          <li><a href="home.html" class="nav-a">Home</a></li>
+          <li><a href="menu.html" class="nav-a">Menu</a></li>
+
+          <li class="dropdown">
+            <a href="#" class="nav-a" id="orderToggle">
+              User Order <span class="arrow">▾</span>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a href="order-tracking.html">Track Your Order</a></li>
+              <li><a href="order-history.html">Orders History</a></li>
+              <li><a href="reviews.html">Reviews</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      <div class="btns">
+        <a href="cart.php">
+          <button class="btn-_icon-cart">
+            <img src="photos/shopping-cart.png" width="28px" alt="cart" />
+          </button>
+        </a>
+      </div>
+
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </header>
+
+    <style>
+      /* =======================================================
+   HEADER STYLES
+   ======================================================= */
+      .head1-home {
+        margin: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 50px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        height: 70px;
+        z-index: 9999;
+        box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+        background-color: var(--bg-color);
+      }
+
+      /* Reset list style */
+      ul {
+        list-style: none;
+      }
+
+      /* Remove default link decoration */
+      a {
+        text-decoration: none;
+        color: var(--first-color);
+      }
+
+      /* Logo styling */
+      .text-logo {
+        color: var(--first-color);
+        font-family: var(--secondary-font);
+        font-style: italic;
+        font-size: 25px;
+        font-family: serif;
+      }
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-left: 0;
+      }
+
+      .logo img {
+        border-radius: 30%;
+      }
+
+      /* Navigation links container */
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 55px;
+      }
+
+      .nav-links.active {
+        display: flex !important;
+      }
+
+      /* Single nav link */
+      .nav-a {
+        color: var(--first-color);
+        font-family: var(--primary-font);
+        transition: all 0.5s;
+        transform: translateY(2px);
+      }
+
+      /* Hover effect for nav link */
+      .nav-a:hover {
+        border-bottom: 2.5px solid white;
+        color: var(--second-color);
+        border-radius: 3px;
+        transform: translateY(-2px);
+      }
+
+      /* Buttons container (cart, login) */
+      .btns {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      /* Log in button style */
+      .btn__log-in {
+        font-family: var(--secondary-font);
+        border: none;
+        background-color: var(--second-color);
+        color: white;
+        border-radius: 20px;
+        padding: 5px 9px;
+        cursor: pointer;
+        transition: all 0.3s;
+        transform: translateY(-2px);
+        animation: jump-in-another-way 2s ease-in-out infinite alternate;
+      }
+
+      .btn__log-in:active {
+        transform: translateY(2px);
+        padding: 10px 12px;
+      }
+
+      @keyframes jump-in-another-way {
+        50% {
+          transform: translateY(-10px);
+        }
+        75% {
+          transform: translateY(-15px);
+        }
+        100% {
+          transform: translateY(-5px);
+        }
+      }
+
+      /* Cart button */
+      .btn-_icon-cart {
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s;
+        transform: translateY(-1.5px);
+      }
+
+      .btn-_icon-cart:active {
+        transform: translateY(1.5px);
+      }
+
+      /* Dropdown menu */
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+
+      .dropdown-menu {
+        display: none;
+        position: absolute;
+        top: 35px;
+        left: 0;
+        background-color: var(--bg-color);
+        border-radius: 15px;
+        min-width: 160px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        flex-direction: column;
+        z-index: 999;
+        transition: 0.5s ease-in-out;
+      }
+
+      .dropdown-menu a {
+        display: block;
+        padding: 10px 15px;
+        color: var(--first-color);
+      }
+
+      .dropdown:hover .dropdown-menu {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      /* Hamburger menu for mobile */
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+        gap: 5px;
+      }
+
+      .hamburger span {
+        width: 25px;
+        height: 3px;
+        background-color: var(--first-color);
+        border-radius: 2px;
+      }
+
+      /* Responsive styles for mobile */
+      @media (max-width: 768px) {
+        .nav-links {
+          display: none;
+          flex-direction: column;
+          width: 100%;
+          background-color: var(--bg-color);
+          position: absolute;
+          top: 70px;
+          left: 0;
+          padding: 10px 0;
+        }
+
+        .btn-_icon-cart {
+          display: flex;
+          gap: 15px;
+        }
+
+        .logo {
+          position: relative;
+          left: auto;
+        }
+
+        .logo h3.text-logo {
+          font-size: 20px;
+        }
+
+        .logo img {
+          width: 45px;
+        }
+
+        .nav-links.active {
+          display: flex;
+        }
+
+        .dropdown-menu {
+          position: static;
+          box-shadow: none;
+        }
+        .dropdown-menu.active {
+          display: flex !important;
+        }
+
+        .hamburger {
+          display: flex;
+        }
+      }
+    </style>
+
+    <script>
+      if (hamburger) {
+        hamburger.addEventListener("click", () => {
+          navLinks.classList.toggle("active");
+        });
+      }
+
+      if (orderToggle) {
+        orderToggle.addEventListener("click", (e) => {
+          // Only run this logic on small screens
+          if (window.innerWidth <= 768) {
+            e.preventDefault(); // Stop the link from following the "#"
+            const menu = orderToggle.nextElementSibling;
+            menu.classList.toggle("active");
+          }
+        });
+      }
+    </script>
+
+
+  <!-- ================= MAIN TITLE ================= -->
+  <h1>Track Your Order</h1>
+  <p class="small">To track your order, please click on it</p>
+
+  <!-- ================= ORDER SUMMARY SECTIONS ================= -->
+  <!-- Each order-summary div represents a single order -->
+
+  <!-- =======================================================
+         ORDER #01 — MARGHERITA PIZZA
+         ======================================================= -->
+  <div class="order-summary">
+    <!-- Order header: title + final status -->
+    <div class="order-header">
+      <p>Order #01 - Margherita Pizza</p>
+      <span class="final-status">Delivered</span>
+    </div>
+
+    <!-- Collapsible details (tracker + info) -->
+    <div class="order-details">
+      <!-- Order progress tracker -->
+      <div class="order-tracker">
+        <span class="status-text progress" data-stage="progress">On Progress</span>
+        <span class="status-text onway" data-stage="onway">On The Way</span>
+        <span class="status-text delivered" data-stage="delivered">Delivered</span>
+
+        <!-- Rider icon animation -->
+        <div class="rider"><img src="user-order\fast-shipping.png" /></div>
+      </div>
+
+      <!-- Order detailed info -->
+      <div class="details">
+        <p><strong>Items:</strong></p>
+        <p>• Margherita Pizza — 1 × (150 EGP)</p>
+        <p>• Pepsi — 1 × (20 EGP)</p>
+
+        <p><strong>Payment:</strong> Visa</p>
+        <p><strong>Total Paid:</strong> 170 EGP</p>
+        <p>
+          <strong>Delivery Address:</strong> Nasr City – Abbas El Akkad Street
+        </p>
+        <p><strong>Delivered At:</strong> 7:25 PM</p>
+        <p><strong>Rider:</strong> Mahmoud • 0111 987 6543</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- =======================================================
+         ORDER #02 — ALFREDO PASTA
+         ======================================================= -->
+  <div class="order-summary">
+    <!-- Same structure as above -->
+    <div class="order-header">
+      <p>Order #02 - Alfredo Chicken Pasta</p>
+      <span class="final-status">Delivered</span>
+    </div>
+    <div class="order-details">
+      <div class="order-tracker">
+        <span class="status-text progress" data-stage="progress">On Progress</span>
+        <span class="status-text onway" data-stage="onway">On The Way</span>
+        <span class="status-text delivered" data-stage="delivered">Delivered</span>
+        <div class="rider"><img src="user-order\fast-shipping.png" /></div>
+      </div>
+
+      <div class="details">
+        <p><strong>Items:</strong></p>
+        <p>• Alfredo Chicken Pasta — 1 × (180 EGP)</p>
+        <p>• Garlic Bread — 1 × (25 EGP)</p>
+        <p><strong>Payment:</strong> Cash on Delivery</p>
+        <p><strong>Total Paid:</strong> 205 EGP</p>
+        <p><strong>Delivery Address:</strong> Heliopolis – Roxy Square</p>
+        <p><strong>Delivered At:</strong> 6:40 PM</p>
+        <p><strong>Rider:</strong> Karim • 0100 564 7882</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- =======================================================
+         ORDER #03 — GREEK SALAD (CANCELED)
+         ======================================================= -->
+  <div class="order-summary">
+    <div class="order-header">
+      <p>Order #03 - Greek Salad</p>
+      <span class="final-status">Canceled</span>
+    </div>
+    <div class="order-details">
+      <div class="order-tracker">
+        <span class="status-text progress" data-stage="progress">On Progress</span>
+        <span class="status-text onway" data-stage="onway">On The Way</span>
+        <span class="status-text canceled" data-stage="canceled">Canceled</span>
+        <div class="rider"><img src="user-order\fast-shipping.png" /></div>
+      </div>
+
+      <div class="details">
+        <p><strong>Items:</strong></p>
+        <p>• Greek Salad — 1 × (95 EGP)</p>
+        <p><strong>Payment:</strong> Not Charged</p>
+        <p><strong>Total:</strong> 0 EGP</p>
+        <p><strong>Reason:</strong> Order was canceled before preparation</p>
+        <p><strong>Cancel Time:</strong> 5:10 PM</p>
+        <p><strong>Support:</strong> Contact us if this was a mistake</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- =======================================================
+         ORDER #04 — MOJITO (IN PROGRESS)
+         ======================================================= -->
+  <div class="order-summary">
+    <div class="order-header">
+      <p>Order #04 - Mojito</p>
+      <span class="final-status">On Progress</span>
+    </div>
+    <div class="order-details">
+      <div class="order-tracker">
+        <span class="status-text progress" data-stage="progress">On Progress</span>
+        <span class="status-text onway" data-stage="onway">On The Way</span>
+        <span class="status-text delivered" data-stage="delivered">Delivered</span>
+        <div class="rider"><img src="fast-shipping.png" /></div>
+      </div>
+
+      <div class="details">
+        <p><strong>Items:</strong></p>
+        <p>• Lemon Mint Mojito — 1 × (60 EGP)</p>
+        <p><strong>Payment:</strong> Cash on Delivery</p>
+        <p><strong>Total Expected:</strong> 60 EGP</p>
+        <p><strong>Status:</strong> Your order is being prepared</p>
+        <p><strong>Estimated Delivery:</strong> 20–25 minutes</p>
+        <p>
+          <strong>Current Step:</strong> The kitchen has started preparing
+          your order 🤗
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- External JS file -->
+  <script src="order-tracking.js"></script>
+</body>
+
+</html>

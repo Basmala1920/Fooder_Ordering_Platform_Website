@@ -1,0 +1,215 @@
+/* =======================================================
+   IMPORT GOOGLE FONT
+   ======================================================= */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+/* =======================================================
+   CSS RESET: Remove default browser spacing
+   ======================================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* =======================================================
+   COLOR VARIABLES FOR CONSISTENT THEME
+   ======================================================= */
+:root {
+  --text-color-light: #9a9a9a; /* Subtle text */
+  --text-color: #344a25;       /* Main text */
+  --nav-color: #5e7b61;        /* Nav header */
+  --orange-color: #d5a03d;     /* Accent color */
+  --bg: #fff8e7;               /* Page background */
+  --bg2: #f4e7d0;              /* Secondary background */
+
+  --first-color: white;
+  --second-color: #d5a03d;
+  --third-color: #323033;
+  --forth-color: #b58835;
+  --bg-color: #6e9671;
+  --backg-color: #fff8e7;
+
+  --primary-font: sans-serif;
+  --secondary-font: "Pacifico";
+  --thirdly-font: "Bungee";
+}
+
+/* =======================================================
+   BASE PAGE STYLING
+   ======================================================= */
+body {
+  font-family: Poppins, sans-serif;
+  padding: 20px;
+  background: var(--bg);
+}
+
+h1 {
+  text-align: center;
+  color: var(--nav-color);
+  margin-top: 80px;
+}
+
+p {
+  color: var(--text-color);
+}
+
+/* Small description text under the title */
+.small {
+  color: var(--text-color-light);
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+/* Reset list style */
+ul {
+  list-style: none;
+}
+
+/* Remove default link decoration */
+a {
+  text-decoration: none;
+  color: var(--first-color);
+}
+
+/* =======================================================
+   ORDER TRACKING STYLES
+   ======================================================= */
+.order-summary {
+  background: var(--bg);
+  border: 2px solid var(--bg2);
+  border-radius: 8px;
+  margin: 30px;
+  padding: 35px;
+  cursor: pointer;
+  transition: transform 0.5s;
+}
+
+.order-summary:hover {
+  transform: scale(1.03);
+}
+
+/* Order header: number + status */
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Final order status */
+.final-status {
+  font-weight: bold;
+  color: var(--text-color);
+  margin: 5px;
+}
+
+/* Hidden details initially */
+.order-details {
+  display: none;
+  margin-top: 15px;
+}
+
+/* Tracker container */
+.order-tracker {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  padding: 30px 0;
+  margin: 10px 0;
+}
+
+/* Dotted timeline */
+.order-tracker::before {
+  content: "";
+  position: absolute;
+  top: 18px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-image: linear-gradient(to right, #ccc 33%, rgba(255,255,255,0) 0%);
+  background-size: 12px 3px;
+  background-repeat: repeat-x;
+  z-index: 1;
+}
+
+/* Status points */
+.status-text {
+  font-weight: 500;
+  position: relative;
+  z-index: 2;
+  width: 20px;
+  height: 20px;
+  background-color: #ccc;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  margin: 15px 0;
+}
+
+/* Status colors */
+.progress { color: #197387; }
+.onway { color: #f4a100; }
+.delivered { color: #198754; }
+.canceled { color: #dc3545; }
+
+/* Rider icon */
+.rider {
+  position: absolute;
+  top: -10px;
+  left: 0%;
+  z-index: 999;
+  transition: left 0.8s ease-in-out;
+}
+
+.rider img {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  transition: left 0.8s ease-in-out;
+}
+
+/* Order details text */
+.details {
+  margin-top: 15px;
+}
+
+/* =======================================================
+   RESPONSIVE STYLING (MOBILE)
+   ======================================================= */
+@media (max-width: 768px) {
+  h1 { font-size: 25px; }
+  .small { font-size: 10px; }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background-color: var(--bg-color);
+    position: absolute;
+    top: 70px;
+    left: 0;
+    padding: 10px 0;
+  }
+
+  .nav-links.active { display: flex; }
+
+  .dropdown-menu {
+    position: static;
+    box-shadow: none;
+    display: none;
+    flex-direction: column;
+  }
+
+  .dropdown.active .dropdown-menu { display: flex; }
+
+  .hamburger { display: flex; }
+
+  .details { font-size: 12px; }
+
+  .order-summary { margin: 15px; padding: 20px; }
+}
